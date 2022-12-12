@@ -7,22 +7,18 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 21.78px;
-    margin-top: 48px;
-    margin-bottom: 37px;
-    min-height: 50px;
     padding: 0;
+    min-height: 50px;
     transition: opacity .2s linear;
 }
 
 .form__submit-button:hover {
-    opacity: 0.8;
+    opacity: .8;
 }
 
 @media screen and (max-width: 767px) {
     .form__submit-button {
         min-width: calc(100% - 44px);
-        margin-top: 45px;
-        margin-bottom: 25px;
         min-height: 46px;
         font-size: 14px;
         line-height: 16.94px;

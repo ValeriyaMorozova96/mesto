@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
-    <title>Mesto</title>
+    <title>Место</title>
 </head>
 
 <body class="page">
@@ -21,52 +21,52 @@
                         <h1 class="profile__name">Жак-Ив Кусто </h1>
                         <p class="profile__description">Путешественник</p>
                     </div>
-                    <button class="profile__edit-button" name="edit"></button>
+                    <button class="profile__edit-button" type="button" aria-label="edit profile" name="edit"></button>
                 </div>
             </div>
-            <button class="profile__add-button" name="add"></button>
+            <button class="profile__add-button" type="button" aria-label="add photo" name="add"></button>
         </section>
         <section class="photos">
             <article class="card">
                 <img class="card__image" src="./images/Turkey-img.png" alt="Турция">
                 <div class="card__caption">
-                    <p class="card__caption-text">Турция</p>
-                    <button class="card__like-button" name="like"></button>
+                    <h2 class="card__caption-text">Турция</h2>
+                    <button class="card__like-button" type="button" aria-label="like photo" name="like"></button>
                 </div>
             </article>
             <article class="card">
                 <img class="card__image" src="./images/Norway-img.png" alt="Норвегия">
                 <div class="card__caption">
-                    <p class="card__caption-text">Норвегия</p>
-                    <button class="card__like-button" name="like"></button>
+                    <h2 class="card__caption-text">Норвегия</h2>
+                    <button class="card__like-button" type="button" aria-label="like photo" name="like"></button>
                 </div>
             </article>
             <article class="card">
                 <img class="card__image" src="./images/Malaysia-img.png" alt="Малайзия">
                 <div class="card__caption">
-                    <p class="card__caption-text">Малайзия</p>
-                    <button class="card__like-button" name="like"></button>
+                    <h2 class="card__caption-text">Малайзия</h2>
+                    <button class="card__like-button" type="button" aria-label="like photo" name="like"></button>
                 </div>
             </article>
             <article class="card">
                 <img class="card__image" src="./images/Portugal-img.png" alt="Португалия">
                 <div class="card__caption">
-                    <p class="card__caption-text">Португалия</p>
-                    <button class="card__like-button" name="like"></button>
+                    <h2 class="card__caption-text">Португалия</h2>
+                    <button class="card__like-button" type="button" aria-label="like photo" name="like"></button>
                 </div>
             </article>
             <article class="card">
                 <img class="card__image" src="./images/Japan-img.png" alt="Япония">
                 <div class="card__caption">
-                    <p class="card__caption-text">Япония</p>
-                    <button class="card__like-button" name="like"></button>
+                    <h2 class="card__caption-text">Япония</h2>
+                    <button class="card__like-button" type="button" aria-label="like photo" name="like"></button>
                 </div>
             </article>
             <article class="card">
                 <img class="card__image" src="./images/Brasil-img.png" alt="Бразилия">
                 <div class="card__caption">
-                    <p class="card__caption-text">Бразилия</p>
-                    <button class="card__like-button" name="like"></button>
+                    <h2 class="card__caption-text">Бразилия</h2>
+                    <button class="card__like-button" type="button" aria-label="like photo" name="like"></button>
                 </div>
             </article>
         </section>
@@ -79,14 +79,14 @@
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="form" name="info">
                 <fieldset class="form__fieldset">
-                    <input class="form__field form__field_name-input" type="text" placeholder="Имя" name="name"
+                    <input class="form__field form__field_type_name" type="text" placeholder="Имя" name="name"
                         value="Жак-Ив Кусто">
-                    <input class="form__field form__field_job-input" type="text" placeholder="О себе" name="about"
+                    <input class="form__field form__field_type_job" type="text" placeholder="О себе" name="about"
                         value="Путешественник">
-                    <button type="submit" class="form__submit-button">Сохранить</button>
                 </fieldset>
+                <button type="submit" aria-label="send form" class="form__submit-button">Сохранить</button>
             </form>
-            <button type="reset" class="popup__close-button"></button>
+            <button type="button" aria-label="close popup" class="popup__close-button"></button>
         </div>
     </div>
     <script src="./scripts/index.js"></script>
