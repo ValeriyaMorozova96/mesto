@@ -9,7 +9,7 @@
     background-image: url(../../../images/close-icon.svg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     min-width: 32px;
     min-height: 32px;
 }
