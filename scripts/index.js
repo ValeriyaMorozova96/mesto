@@ -84,7 +84,7 @@ function openPhoto(name, link) {
     photoPopupPic.src = link;
     photoPopupPic.alt = name;
     photoPopupCaption.textContent = name;
-    openPhotoPopup(); 
+    openPhotoPopup();
 }
 
 function closePhotoPopup() {
