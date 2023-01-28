@@ -66,6 +66,7 @@ function openEditDataPopup() {
     openPopup(popupEditProfile);
     nameInput.value = profileName.textContent;
     jobInput.value = profileCaption.textContent;
+    buttonSubmitProfile.classList.add('form__submit-button_disabled')
     buttonSubmitProfile.setAttribute("disabled", true);
 }
 
