@@ -1,4 +1,4 @@
-const popup = document.querySelector('.popup');
+const popups = Array.from(document.querySelectorAll('.popup'))
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const popupEditProfile = document.querySelector('#editDataPopup');
@@ -10,6 +10,7 @@ const profileCloseButton = document.querySelector('#profileCloseButton');
 const cardCloseButton = document.querySelector('#cardCloseButton');
 const photoCloseButton = document.querySelector('#photoCloseButton');
 const formElement = document.querySelector('.form');
+const inputElement = document.querySelector('.form__field');
 const nameInput = document.querySelector('.form__field_type_name');
 const jobInput = document.querySelector('.form__field_type_job');
 const profileName = document.querySelector('.profile__name');
@@ -19,6 +20,8 @@ const photoPopupPic = document.querySelector('.popup__photo');
 const photoPopupCaption = document.querySelector('.popup__photo-caption');
 const cardInputCaption = document.querySelector('.form__field_type_place');
 const cardInputPhoto = document.querySelector('.form__field_type_image-link');
+const buttonSubmitProfile = document.querySelector('#buttonSubmitProfile');
+const buttonSubmitAddCard = document.querySelector('#buttonSubmitAddCard');
 
 //создание карточек
 function createCard(el) {
@@ -39,10 +42,12 @@ function createCard(el) {
 //открытие и закрытие попапов
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupEsc);
 };
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupEsc)
 };
 
 //лайк фото
@@ -61,6 +66,7 @@ function openEditDataPopup() {
     openPopup(popupEditProfile);
     nameInput.value = profileName.textContent;
     jobInput.value = profileCaption.textContent;
+    buttonSubmitProfile.setAttribute("disabled", true);
 }
 
 function closeEditDataPopup() {
@@ -96,6 +102,8 @@ function openAddCardPopup() {
     cardInputCaption.value = '';
     cardInputPhoto.value = '';
     openPopup(popupAddCard);
+    buttonSubmitAddCard.classList.add('form__submit-button_disabled')
+    buttonSubmitAddCard.setAttribute("disabled", true);
 }
 
 function closeAddCardPopup() {
@@ -116,6 +124,28 @@ function handleCardFormSubmit(evt) {
     evt.preventDefault();
     createNewCard();
 };
+
+//закрытие попапов кликом на esc
+function closePopupEsc(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
+//закрытие попапов кликом на overlay
+function closePopupOverlay(evt, popup) {
+    if (evt.target === evt.currentTarget) {
+        closePopup(popup)
+    }
+}
+
+function closePopupsOverlay() {
+    popups.forEach(popup => {
+        popup.addEventListener('click', evt => closePopupOverlay(evt, popup))
+    })
+}
+closePopupsOverlay();
+
 editButton.addEventListener('click', openEditDataPopup);
 profileCloseButton.addEventListener('click', closeEditDataPopup);
 photoCloseButton.addEventListener('click', closePhotoPopup);

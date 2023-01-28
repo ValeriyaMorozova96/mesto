@@ -3,7 +3,7 @@
     flex-direction: column;
     border: none;
     padding: 0;
-    margin-bottom: 48px;
+    margin-bottom: 18px;
     margin-left: 0;
     margin-right: 0;
 
@@ -11,6 +11,6 @@
 
 @media screen and (max-width: 767px) {
     .form__fieldset {
-        margin-bottom: 45px;
+        margin-bottom: 15px;
     }
 }
