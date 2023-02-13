@@ -1,3 +1,7 @@
+import { initialCards } from './data.js';
+import { Card } from './Card.js';
+import { validationData, FormValidator } from './FormValidator.js';
+
 const popups = Array.from(document.querySelectorAll('.popup'))
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonAddCard = document.querySelector('.profile__add-button');
@@ -18,26 +22,10 @@ const photoPopupPic = document.querySelector('.popup__photo');
 const photoPopupCaption = document.querySelector('.popup__photo-caption');
 const cardInputCaption = document.querySelector('.form__field_type_place');
 const cardInputPhoto = document.querySelector('.form__field_type_image-link');
-const buttonSubmitProfile = document.querySelector('#buttonSubmitProfile');
 const buttonSubmitAddCard = document.querySelector('#buttonSubmitAddCard');
-const cardTemplate = document.querySelector('#cards').content;
-const cardElement = cardTemplate.querySelector('.card');
+const profileFormValidator = new FormValidator(validationData, popupEditProfile);
+const cardFormValidator = new FormValidator(validationData, popupAddCard);
 
-//создание карточек
-function createCard(cardData) {
-    const cardElement = cardTemplate.cloneNode(true);
-    const buttonLikeCard = cardElement.querySelector('.card__like-button');
-    const buttonDeleteCard = cardElement.querySelector('.card__delete-button');
-    const cardImage = cardElement.querySelector('.card__image');
-    const cardCaption = cardElement.querySelector('.card__caption-text');
-    cardImage.src = cardData.link;
-    cardCaption.textContent = cardData.name;
-    cardImage.alt = cardData.name;
-    buttonLikeCard.addEventListener('click', (evt) => likePhoto(evt));
-    buttonDeleteCard.addEventListener('click', (evt) => deleteCard(evt));
-    cardImage.addEventListener('click', () => openPhoto(cardData.name, cardData.link));
-    return cardElement;
-}
 //открытие и закрытие попапов
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -49,17 +37,6 @@ function closePopup(popup) {
     document.removeEventListener('keydown', closePopupEsc)
 };
 
-//лайк фото
-function likePhoto(evt) {
-    evt.target.classList.toggle('card__like-button_active');
-}
-
-//удаление карточки
-function deleteCard(evt) {
-    const removedCard = evt.target.closest('.card');
-    removedCard.remove();
-}
-
 //открытие и закрытие попапа, редактирующего профиль
 function openEditDataPopup() {
     openPopup(popupEditProfile);
@@ -69,6 +46,7 @@ function openEditDataPopup() {
 
 function closeEditDataPopup() {
     closePopup(popupEditProfile);
+    profileFormValidator.resetValidation();
 }
 
 //редактирование информации в профиле и отправка формы
@@ -105,19 +83,28 @@ function openAddCardPopup() {
 
 function closeAddCardPopup() {
     closePopup(popupAddCard);
+    cardFormValidator.resetValidation();
 }
 
-//добавление новой карточки
+//добавление карточек
+function createCard(name, link) {
+    const newCard = new Card(name, link, openPhoto);
+    const cardElement = newCard.generateCard();
+
+    return cardElement;
+}
+
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
-    const newCardData = {
-        name: cardInputCaption.value,
-        link: cardInputPhoto.value
-    };
-    const newCard = createCard(newCardData);
-    photosContainer.prepend(newCard);
+    const newCardData = createCard(cardInputCaption.value, cardInputPhoto.value);
+    photosContainer.prepend(newCardData);
     closePopup(popupAddCard);
 }
+
+initialCards.forEach((cardData) => {
+    const cardElement = createCard(cardData.name, cardData.link);
+    photosContainer.append(cardElement);
+})
 
 //закрытие попапов кликом на esc
 function closePopupEsc(evt) {
@@ -149,6 +136,5 @@ cardCloseButton.addEventListener('click', closeAddCardPopup);
 formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 formAddCard.addEventListener('submit', handleCardFormSubmit);
 
-initialCards.map(function (cardData) {
-    photosContainer.append(createCard(cardData));
-});
+profileFormValidator.enableValidation();
+cardFormValidator.enableValidation();
