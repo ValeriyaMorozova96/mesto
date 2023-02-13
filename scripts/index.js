@@ -22,7 +22,6 @@ const photoPopupPic = document.querySelector('.popup__photo');
 const photoPopupCaption = document.querySelector('.popup__photo-caption');
 const cardInputCaption = document.querySelector('.form__field_type_place');
 const cardInputPhoto = document.querySelector('.form__field_type_image-link');
-const buttonSubmitAddCard = document.querySelector('#buttonSubmitAddCard');
 const profileFormValidator = new FormValidator(validationData, popupEditProfile);
 const cardFormValidator = new FormValidator(validationData, popupAddCard);
 
