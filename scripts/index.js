@@ -39,6 +39,7 @@ function closePopup(popup) {
 
 //открытие и закрытие попапа, редактирующего профиль
 function openEditDataPopup() {
+    profileFormValidator.resetValidation();
     openPopup(popupEditProfile);
     nameInput.value = profileName.textContent;
     jobInput.value = profileCaption.textContent;
@@ -46,7 +47,6 @@ function openEditDataPopup() {
 
 function closeEditDataPopup() {
     closePopup(popupEditProfile);
-    profileFormValidator.resetValidation();
 }
 
 //редактирование информации в профиле и отправка формы
@@ -75,15 +75,14 @@ function closePhotoPopup() {
 
 //открытие и закрытие попапа, добавляющего новую карточку
 function openAddCardPopup() {
+    cardFormValidator.resetValidation();
     formAddCard.reset();
     openPopup(popupAddCard);
-    buttonSubmitAddCard.classList.add('form__submit-button_disabled')
-    buttonSubmitAddCard.setAttribute("disabled", true);
+    cardFormValidator.toggleButtonState();
 }
 
 function closeAddCardPopup() {
     closePopup(popupAddCard);
-    cardFormValidator.resetValidation();
 }
 
 //добавление карточек

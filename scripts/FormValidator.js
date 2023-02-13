@@ -39,7 +39,7 @@ export class FormValidator {
         });
     }
     //управление акивацией кнопки "сохранить"
-    _toggleButtonState() {
+    toggleButtonState() {
         if (this._hasInvalidInput()) {
             this._buttonElement.classList.add(this._validationData.inactiveButtonClass);
             this._buttonElement.setAttribute('disabled', true);
@@ -56,11 +56,11 @@ export class FormValidator {
     }
     //слушатели
     _setEventListeners() {
-        this._toggleButtonState();
+        this.toggleButtonState();
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._isValid(inputElement);
-                this._toggleButtonState();
+                this.toggleButtonState();
             });
         });
     }
