@@ -1,11 +1,3 @@
-export const validationData = {
-    formSelector: '.form',
-    inputSelector: '.form__field',
-    submitButtonSelector: '.form__submit-button',
-    inactiveButtonClass: 'form__submit-button_disabled',
-    inputErrorClass: 'form__field_type_error'
-};
-
 export class FormValidator {
     constructor(validationData, formElement) {
         this._validationData = validationData;

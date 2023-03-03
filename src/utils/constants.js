@@ -24,3 +24,32 @@ export const initialCards = [
         link: 'https://images.unsplash.com/photo-1670160031427-dd6a22c737cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80'
     }
 ];
+
+export const validationData = {
+    formSelector: '.form',
+    inputSelector: '.form__field',
+    submitButtonSelector: '.form__submit-button',
+    inactiveButtonClass: 'form__submit-button_disabled',
+    inputErrorClass: 'form__field_type_error'
+};
+
+
+const buttonEditProfile = document.querySelector('.profile__edit-button');
+const buttonAddCard = document.querySelector('.profile__add-button');
+const formAddCard = document.querySelector('#addCardForm')
+const formEditProfile = document.querySelector('#formEditProfile')
+const nameInput = document.querySelector('.form__field_type_name');
+const jobInput = document.querySelector('.form__field_type_job');
+const cardInputCaption = document.querySelector('.form__field_type_place');
+const cardInputPhoto = document.querySelector('.form__field_type_image-link');
+
+export {
+buttonEditProfile,
+buttonAddCard,
+formAddCard,
+formEditProfile,
+nameInput,
+jobInput,
+cardInputCaption ,
+cardInputPhoto
+}

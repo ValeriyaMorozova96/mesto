@@ -1,13 +1,14 @@
 export class Card {
-    constructor(name, link, openPhoto) {
+    constructor(name, link, cardSelector, openPhoto) {
         this._name = name;
         this._link = link;
         this._openPhoto = openPhoto;
+        this._cardSelector = cardSelector;
     }
     //получаем темплейт
     _getTemplate() {
         const cardElement = document
-            .querySelector('#cards')
+            .querySelector(this._cardSelector)
             .content
             .querySelector('.card')
             .cloneNode(true);
@@ -48,7 +49,7 @@ export class Card {
         });
 
         this._cardImage.addEventListener('click', () => {
-            this._openPhoto(this._name, this._link);
+            this._openPhoto (this._name, this._link);
         });
     }
 }
