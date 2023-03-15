@@ -14,7 +14,9 @@
     <main class="content">
         <section class="profile">
             <div class="profile__data">
-                <img class="profile__avatar" src="<%=require('./images/profile-image.png')%>" alt="Аватар">
+                <div class="profile__avatar-change">
+                    <img class="profile__avatar" src="<%=require('./images/profile-image.png')%>" alt="Аватар">
+                </div>
                 <div class="profile__information">
                     <div class="profile__info">
                         <h1 class="profile__name">Жак-Ив Кусто </h1>
@@ -78,13 +80,43 @@
             <p class="popup__photo-caption"></p>
         </div>
     </div>
+    <div class="popup" id="changeAvatarPopup">
+        <div class="popup__container">
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form class="form" name="avatar" novalidate id="formChangeAvatar">
+                <fieldset class="form__fieldset">
+                    <input id='avatar-field' class="form__field form__field_type_avatar" type="text"
+                        placeholder="Ссылка на аватар" name="avatar" minlength="2" maxlength="30" required>
+                    <span class="form__field-error avatar-field-error"></span>
+                </fieldset>
+                <button id='buttonSubmitAvatar' type="submit" aria-label="отправить форму"
+                    class="form__submit-button">Сохранить</button>
+            </form>
+            <button type="button" aria-label="закрыть всплывающее окно" class="popup__close-button"
+                id="avatarCloseButton"></button>
+        </div>
+    </div>
+    <div class="popup" id="deleteConfirmPopup">
+        <div class="popup__container">
+            <h2 class="popup__title">Вы уверены?</h2>
+            <form class="form" name="confirm" novalidate id="formDeleteConfirm">
+                <button id='buttonDeleteConfirm' type="submit" aria-label="отправить форму"
+                    class="form__submit-button">Да</button>
+            </form>
+            <button type="button" aria-label="закрыть всплывающее окно" class="popup__close-button"
+                id="confirmCloseButton"></button>
+        </div>
+    </div>
     <template id="cards">
         <article class="card">
             <img class="card__image" alt="Фотография места">
             <button class="card__delete-button" type="button" aria-label="удалить фото"></button>
             <div class="card__caption">
                 <h2 class="card__caption-text"></h2>
-                <button class="card__like-button" type="button" aria-label="поставить лайк" name="like"></button>
+                <div class="card__like-box">
+                    <button class="card__like-button" type="button" aria-label="поставить лайк" name="like"></button>
+                    <span class="card__like-count">0</span>
+                </div>
             </div>
         </article>
     </template>
