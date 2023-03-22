@@ -20,8 +20,6 @@ const buttonAvatar = document.querySelector('.profile__avatar');
 const formAddCard = document.querySelector('#addCardForm');
 const formEditProfile = document.querySelector('#formEditProfile');
 const formChangeAvatar = document.querySelector('#formChangeAvatar')
-const nameInput = document.querySelector('.form__field_type_name');
-const jobInput = document.querySelector('.form__field_type_job');
 
 export {
 buttonEditProfile,
@@ -29,7 +27,5 @@ buttonAddCard,
 buttonAvatar,
 formAddCard,
 formEditProfile,
-formChangeAvatar,
-nameInput,
-jobInput
+formChangeAvatar
 }

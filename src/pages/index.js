@@ -7,9 +7,7 @@ import {
     buttonAvatar,
     formAddCard,
     formEditProfile,
-    formChangeAvatar,
-    nameInput,
-    jobInput
+    formChangeAvatar
 } from '../utils/constants.js';
 
 import { Card } from '../components/Card.js';
@@ -148,8 +146,7 @@ function handleAvatarFormSubmit({ avatar }) {
 //профайл пользователя
 function getData() {
     const profileData = userProfile.getUserInfo();
-    nameInput.value = profileData.name;
-    jobInput.value = profileData.about;
+    popupEditProfile.setInputValues(profileData);
 }
 
 function handleProfileFormSubmit({ name, about }) {
